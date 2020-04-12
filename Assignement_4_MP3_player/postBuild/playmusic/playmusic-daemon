@@ -2,7 +2,6 @@
 
 set -e
 
-#sudo modprobe snd-bcm2835 #This will wire up the sound card with alsa
 PLAYER="/"
 test -d ${PLAYER} || exit 1
 

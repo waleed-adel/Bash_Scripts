@@ -5,9 +5,6 @@ set -e
 
 networkName="brmp3player"
 
-# Bluetooth
-echo "root=/dev/mmcblk0p2 rootwait console=serial0,115200 console=tty1" > output/images/rpi-firmware/cmdline.txt
-
 # hostname to easily connect by name
 #echo "$networkName" > output/target/etc/hostname
 
@@ -68,13 +65,10 @@ fi
 sudo cp $(dirname $0)/playmusic/S50-playmusic-daemon-service ${TARGET_DIR}/etc/init.d/
 sudo chmod 777 ${TARGET_DIR}/etc/init.d/S50-playmusic-daemon-service
 sudo cp $(dirname $0)/playmusic/playmusic* ${TARGET_DIR}/root/superMusic/
-#sudo cp $(dirname $0)/playmusic/*.mp3 ${TARGET_DIR}/root/superMusic/
 sudo cp $(dirname $0)/playmusic/detectUSB ${TARGET_DIR}/root/superMusic/
-sudo cp $(dirname $0)/playmusic/startBluetooth ${TARGET_DIR}/root/superMusic/
 sudo chmod -R 777 ${TARGET_DIR}/root
-## Install music 
 
-################# Enabling Wifi #######################################
+################# Enabe Wifi #######################################
 if [ ! -d "${TARGET_DIR}/etc/wpa_supplicant" ]; then
     sudo mkdir ${TARGET_DIR}/etc/wpa_supplicant
 fi
